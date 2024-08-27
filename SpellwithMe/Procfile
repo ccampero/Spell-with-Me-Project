@@ -1,1 +1,1 @@
-web: gunicorn <SpellwithMe>.wsgi
+web: gunicorn SpellwithMe.wsgi
