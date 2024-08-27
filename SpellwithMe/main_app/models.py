@@ -46,10 +46,11 @@ class Study(models.Model):
         choices=WORD_CHOICES,  
         default=0  
     )
+    speller = models.ForeignKey(Speller, on_delete=models.CASCADE)
     adulthelp = models.CharField(
         max_length=1,
         choices=ADULTHELP,
-        default=ADULTHELP[0]
+        default=ADULTHELP[0][0]
     )
    
     def __str__(self):

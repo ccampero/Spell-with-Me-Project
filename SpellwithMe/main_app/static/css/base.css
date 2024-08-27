@@ -286,4 +286,59 @@ html {
     color: var(--link-hover-color);
   }
   
+  .header-image {
+    max-width: 15%; 
+    width: 25%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+  }
+  header {
+    width: 100%;
+    background: var(--nav-bg-ff); /* rgba(104, 197, 248, .9) */
+    border-bottom: var(--borders);
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center content horizontally */
+  }
   
+  .header-content {
+    display: flex;
+    align-items: center; /* Vertically center items */
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+  }
+  
+  .header-image {
+    max-width: 15%; 
+    width: 25%; 
+    height: auto; 
+    margin-right: 20px; /* Adds space between image and text */
+  }
+  
+  .header-text {
+    flex-grow: 1; /* Allows the text to take available space */
+  }
+  
+  .header-text h1 {
+    font-size: var(--font-xxl); /* Adjust font size as needed */
+    margin: 0; /* Removes default margin */
+  }
+  
+  nav {
+    margin: 10px;
+  }
+  
+
+@media only screen and (max-width: 768px) {
+  .header-image {
+      width: 70%; /* Adjust this as needed */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .header-image {
+      width: 90%; /* Adjust this as needed */
+  }
+}

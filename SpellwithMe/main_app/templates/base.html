@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="{% static 'path/to/favicon.png' %}" />
+    <link rel="shortcut icon" type="image/png" href="{% static '' %}" />
     <title>Spell with Me</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     {% block head %} 
@@ -14,15 +14,18 @@
   </head>
   <body>
     <header>
-      <div class="header-logo-container">
+      <div class="header-content">
         <a href="/">
-          <img src="{% static 'path/to/logo.png' %}" alt="The Spell with Me logo" />
+          <img src="{% static 'images/blocks.jpg' %}" alt="Header Image" class="header-image" />
         </a>
+        <div class="header-text">
+          <h1>Spell with Me</h1>
+        </div>
       </div>
       <nav>
         <ul>
           {% if user.is_authenticated %}
-            <li><a href="{% url 'speller-index' %}">All Spellers</a></li>
+            <li><a href="{% url 'speller-index' %}">Spellers</a></li>
             <li><a href="{% url 'word-index' %}">All Words</a></li>
             <li><a href="{% url 'speller-create' %}">Add a Speller</a></li>
             <li><a href="{% url 'word-create' %}">Add a Word</a></li>

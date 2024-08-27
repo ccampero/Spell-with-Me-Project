@@ -41,7 +41,7 @@ def add_study(request, speller_id):
     form = StudyForm(request.POST)
    
     if form.is_valid():
-      
+        print('valid')
         new_study = form.save(commit=False)
         new_study.speller_id = speller_id
         new_study.save()
