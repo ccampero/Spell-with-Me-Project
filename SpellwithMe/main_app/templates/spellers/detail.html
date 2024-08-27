@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/spellers/speller-detail.css' %}" />
+{% endblock %}
+{% block content %}
+<section class="speller-container">
+  <div class="speller-img">
+    <img src="{% static 'images/sk8r-boi-cat.svg' %}" alt="A skater boy cat" />
+  </div>
+  <div class="speller-details">
+    <h1>{{ speller.name }}</h1>
+    {% if speller.age > 5 %}
+      <h2>A {{ speller.age }} year old Super Speller!</h2>
+    {% else %}
+      <h2>A {{ speller.age }} future speller.</h2>
+    {% endif %}
+    <p>{{ speller.description }}</p>
+
+    <div class="speller-actions">
+        <a href="{% url 'speller-update' speller.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'speller-delete' speller.id %}" class="btn danger">Delete</a>
+    </div>
+</div>
+</div>
+</section>
+    <div class="studys-word-container">
+      <section class="studys">
+        <div class="subsection-title">
+          <h2>Study Sessions</h2>
+          <img src="{% static 'images/cat-cone.svg' %}" alt="An ice cream cone cat" />
+          <img src="{% static 'images/cat-onigiri.svg' %}" alt="A cat as onigiri" />
+          <img src="{% static 'images/kitty-kabob.svg' %}" alt="A kabob of kittens" />
+        </div> 
+            <h3>Add a Study Session</h3>
+    <form action="{% url 'add-study' speller.id %}" method="post" class="subsection-content" autocomplete="off">
+    {% csrf_token %} 
+    {{ study_form.as_p }}
+    <button type="submit" class="btn submit">Add Study Session</button>
+    </form>          
+        <h3>Past Study Sessions</h3>
+        {% if speller.study_set.all.count %}
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Minutes</th>
+                <th>Number of Words</th>
+                <th>Adult Help</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for study in speller.study_set.all %}
+              <tr>
+                <td>{{ study.date }}</td>
+                <td>{{ study.minutes }}</td>
+                <td>{{ study.numberofwords }}</td>
+                <td>{{ study.get_adulthelp_display }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <div class="subsection-content">
+            <p>⚠️ {{ speller.name }} has not studied!</p>
+          </div>
+        {% endif %}
+    </tbody>
+    </table>
+      </section>   
+      <section class="words">
+        <div class="subsection-title">
+          <h2>Words</h2>
+          <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
+          <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
+          <img src="{% static 'images/fish.svg' %}" alt="A fishy toy" />
+        </div>
+            <h3>{{ speller.name }}'s Words</h3>
+            <div class="subsection-content">
+              {% if speller.words.count %} 
+                {% for word in speller.words.all %}
+                  <div class="word-container">
+                    <div class="color-block" style="background-color: {{ word.color }}"></div>
+                    <a href="{% url 'word-detail' word.id %}">
+                      <p>A {{ word.color }} {{ word.word }}</p>
+                    </a>
+                    <form action="{% url 'remove-word' speller.id word.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Remove Word</button>
+                      </form>
+                  </div>
+                {% endfor %} 
+              {% else %}
+                <p class="no-words">{{speller.name}} doesn't have any words!</p>
+              {% endif %}
+            </div>
+            <h3>Available Words</h3>
+            <div class="subsection-content">
+    {% if words.count %} 
+    {% for word in words.all %}
+      <div class="word-container">
+        <div class="color-block" style="background-color: {{ word.color }}"></div>
+        <a href="{% url 'word-detail' word.id %}">
+          <p>A {{ word.color }} {{ word.word }}</p>
+        </a>
+        
+          <form action="{% url 'associate-word' speller.id word.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn submit">Add Word</button>
+          </form>
+      </div>
+    {% endfor %} 
+  {% else %}
+    <p class="all-words">{{speller.name}} already has all the available words 🥳</p>
+  {% endif %}
+</div>
+         </div>
+          </section>
+   
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/words/word-detail.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<div class="card" style="border-color: {{ word.color }}">
+  <div class="card-bg" style="background-color: {{ word.color }}"></div>
+  <div class="card-content">
+    <h2>{{ word.word }}</h2>
+    <p>A {{ word.color }} word for the grade {{ word.grade }} list.</p>
+  </div>
+</div>
+<a href="{% url 'word-update' word.id %}" class="btn warn">Edit</a>
+<a href="{% url 'word-delete' word.id %}" class="btn danger">Delete</a>
+
+
+{% endblock %}
