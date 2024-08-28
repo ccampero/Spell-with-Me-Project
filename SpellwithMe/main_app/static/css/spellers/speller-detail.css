@@ -12,9 +12,12 @@
   }
   
   .usr-img {
-    width: 100%;
+    width: 100%; /* Ensure it fills the width of its container */
+    height: 150px; /* Maintain aspect ratio */
+    object-fit: cover; /* This will make the image cover the container, cropping if necessary */
     border-radius: var(--card-border-radius);
-  }
+    overflow: hidden;
+}
   
   .speller-details {
     width: 98%;
@@ -188,7 +191,7 @@
   }
   
   @media only screen and (min-width: 768px) {
-    .cat-container {
+    .speller-container {
       padding: 35px 30px;
       flex-direction: row;
       align-items: center;
@@ -217,4 +220,4 @@
       padding: 0 40px;
     }
   }
-  
+ 

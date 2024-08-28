@@ -27,9 +27,9 @@ html {
       'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
       'Helvetica Neue', sans-serif;
     min-height: 100vh;
-    --nav-bg: rgba(104, 197, 248, 0.7);
-    --nav-bg-ff: rgba(104, 197, 248, 0.9);
-    --borders: rgb(36, 116, 248) solid 2px;
+    --nav-bg: rgba(72, 202, 94, 0.7);
+    --nav-bg-ff: rgba(38, 175, 72, 0.9);
+    --borders: rgb(4, 39, 12) solid 2px;
     --text-color: rgb(17, 20, 17);
     --link-hover-color: rgb(16, 56, 158);
     --button-bg: rgb(245, 245, 245);
@@ -45,12 +45,30 @@ html {
     --font-l: 1.8rem;
     --font-reg: 1.6rem;
     --card-border-radius: 6px;
+     
   }
   
   header {
     width: 100%;
     background: var(--nav-bg-ff); /* rgba(104, 197, 248, .9) */
     border-bottom: var(--borders);
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    text-align: center; /* Center the text */
+  }
+  
+  .page-header {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center the header text */
+    align-items: center;
+  }
+  
+  .page-header h1 {
+    font-size: var(--font-xxl);
+    margin: 0;
+    text-align: center; /* Ensure the text is centered */
   }
   
   nav {
@@ -206,12 +224,15 @@ html {
     }
   
     .page-header img {
-      height: 50px;
+      max-height: 150px;
+      max-width: 100%;
       margin-left: 20px;
     }
   
     .page-header img:first-of-type {
       margin-left: 25px;
+      max-height: 150px;
+      max-width: 100%;
     }
   
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
@@ -264,7 +285,7 @@ html {
   
       nav,
       .header-logo-container {
-        background: rgba(104, 197, 248, 0.6);
+        background: rgba(8, 117, 67, 0.6);
         -webkit-backdrop-filter: blur(3px);
         backdrop-filter: blur(3px);
       }
@@ -303,25 +324,28 @@ html {
   }
   
   .header-content {
-    display: flex;
-    align-items: center; /* Vertically center items */
+    
+    align-items: center; /* Vertically centers items */
+    justify-content: space-between; /* Distributes space between items */
     padding: 10px 20px;
     width: 100%;
-    max-width: 1200px; /* Adjust as needed */
+    max-width: 750px; /* Adjust as needed */
   }
-  
-  .header-image {
-    max-width: 15%; 
-    width: 25%; 
+
+.header-image {
+    max-width: 50%; 
+    width: 50%; 
     height: auto; 
-    margin-right: 20px; /* Adds space between image and text */
-  }
+    margin-left: -200px; /* Adds space between image and text */
+}
+
+.header-text {
+  text-align: center; /* Centers the text within its container */
+  flex-grow: 1; /* Allows the text to take up available space */
+}
+
   
-  .header-text {
-    flex-grow: 1; /* Allows the text to take available space */
-  }
-  
-  .header-text h1 {
+.header-text h1 {
     font-size: var(--font-xxl); /* Adjust font size as needed */
     margin: 0; /* Removes default margin */
   }

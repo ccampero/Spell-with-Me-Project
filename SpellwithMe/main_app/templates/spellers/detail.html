@@ -5,9 +5,7 @@
 {% endblock %}
 {% block content %}
 <section class="speller-container">
-  <div class="speller-img">
-    <img src="{% static 'images/sk8r-boi-cat.svg' %}" alt="A skater boy cat" />
-  </div>
+  
   <div class="speller-details">
     <h1>{{ speller.name }}</h1>
     {% if speller.age > 5 %}
@@ -28,9 +26,7 @@
       <section class="studys">
         <div class="subsection-title">
           <h2>Study Sessions</h2>
-          <img src="{% static 'images/cat-cone.svg' %}" alt="An ice cream cone cat" />
-          <img src="{% static 'images/cat-onigiri.svg' %}" alt="A cat as onigiri" />
-          <img src="{% static 'images/kitty-kabob.svg' %}" alt="A kabob of kittens" />
+          
         </div> 
             <h3>Add a Study Session</h3>
     <form action="{% url 'add-study' speller.id %}" method="post" class="subsection-content" autocomplete="off">
@@ -71,9 +67,7 @@
       <section class="words">
         <div class="subsection-title">
           <h2>Words</h2>
-          <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
-          <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
-          <img src="{% static 'images/fish.svg' %}" alt="A fishy toy" />
+          
         </div>
             <h3>{{ speller.name }}'s Words</h3>
             <div class="subsection-content">
@@ -82,7 +76,7 @@
                   <div class="word-container">
                     <div class="color-block" style="background-color: {{ word.color }}"></div>
                     <a href="{% url 'word-detail' word.id %}">
-                      <p>A {{ word.color }} {{ word.word }}</p>
+                      <p>  {{ word.word }} on the grade {{ word.grade }}  list</p>
                     </a>
                     <form action="{% url 'remove-word' speller.id word.id %}" method="post">
                         {% csrf_token %}
@@ -101,7 +95,7 @@
       <div class="word-container">
         <div class="color-block" style="background-color: {{ word.color }}"></div>
         <a href="{% url 'word-detail' word.id %}">
-          <p>A {{ word.color }} {{ word.word }}</p>
+          <p> {{ word.word }} on the grade {{ word.grade }} list</p>
         </a>
         
           <form action="{% url 'associate-word' speller.id word.id %}" method="post">

@@ -5,14 +5,9 @@
 {% endblock %}
 {% block content %}
 
-<section class="logo-container">
-  <div class="speller-container">
-    {% comment %} <img src="{% static 'images/Designer.png' %}" alt="Spell with Me Home background" /> {% endcomment %}
-  </div>
-  <img src="{% static 'images/Designer.png' %}" alt="Text reads: Spell with Me" />
-</section>
+
 {% if not user.is_authenticated %}
-<section>
+  <section>
     <form action="{% url 'home' %}" method="post" class="login">
       <h1>Login</h1>
       {% csrf_token %} {{ form.as_p }}
@@ -20,8 +15,6 @@
       <button type="submit" class="btn submit">Login</button>
     </form>
   </section>
-  {% endif %}
-  
-  {% endblock %}
-  
+{% endif %}
 
+{% endblock %}

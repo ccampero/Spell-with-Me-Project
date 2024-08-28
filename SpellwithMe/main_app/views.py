@@ -71,7 +71,7 @@ def signup(request):
             user = form.save()
             # This is how we log a user in
             login(request, user)
-            return redirect('cat-index')
+            return redirect('speller-index')
         else:
             error_message = 'Invalid sign up - try again'
     # A bad POST or a GET request, so render signup.html with an empty form
@@ -87,7 +87,7 @@ def signup(request):
 
 class SpellerCreate(LoginRequiredMixin, CreateView):
     model = Speller
-    fields = ['name','description', 'age']
+    fields = ['name','description', 'age', 'grade']
     success_url = '/spellers/'
     
     def form_valid(self, form):
@@ -115,7 +115,7 @@ class WordDetail(LoginRequiredMixin, DetailView):
 
 class WordUpdate(LoginRequiredMixin, UpdateView):
     model = Word
-    fields = ['name', 'color', 'grade']
+    fields = ['word', 'color', 'grade']
 
 class WordDelete(LoginRequiredMixin, DeleteView):
     model = Word
